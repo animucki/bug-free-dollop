@@ -101,7 +101,14 @@ while True:
         )
         for update in r.json().get("result", []):
             offset = update["update_id"] + 1
-            text = update.get("message", {}).get("text", "").strip()
+
+            message = update.get("message", {})
+
+            # ignore messages from anyone other than the configured chat
+            if message.get("chat", {}).get("id") != TELEGRAM_CHAT_ID:
+                continue
+
+            text = message.get("text", "").strip()
             if not text:
                 continue
 
