@@ -8,7 +8,7 @@ import os
 # configuration
 config = yaml.safe_load(open("config.yaml"))
 TELEGRAM_TOKEN = config["telegram"]["token"]
-TELEGRAM_CHAT_ID = config["telegram"]["chat_id"]
+TELEGRAM_CHAT_ID = int(config["telegram"]["chat_id"])
 STATE_FILE = "state.json"
 
 # data
